@@ -13,6 +13,9 @@
 		20404F801A7E48DC009CC47B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20404F7F1A7E48DC009CC47B /* Images.xcassets */; };
 		20404F831A7E48DC009CC47B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20404F811A7E48DC009CC47B /* LaunchScreen.xib */; };
 		20404F8F1A7E48DC009CC47B /* QQchatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20404F8E1A7E48DC009CC47B /* QQchatTests.swift */; };
+		20404F991A7E4971009CC47B /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20404F981A7E4971009CC47B /* MessageView.swift */; };
+		20404F9B1A7E49F7009CC47B /* ChatRoomTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20404F9A1A7E49F7009CC47B /* ChatRoomTableViewController.swift */; };
+		20404F9D1A7E5E5B009CC47B /* MessageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20404F9C1A7E5E5B009CC47B /* MessageInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +39,9 @@
 		20404F881A7E48DC009CC47B /* QQchatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QQchatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		20404F8D1A7E48DC009CC47B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20404F8E1A7E48DC009CC47B /* QQchatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QQchatTests.swift; sourceTree = "<group>"; };
+		20404F981A7E4971009CC47B /* MessageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
+		20404F9A1A7E49F7009CC47B /* ChatRoomTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatRoomTableViewController.swift; sourceTree = "<group>"; };
+		20404F9C1A7E5E5B009CC47B /* MessageInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,10 +85,13 @@
 			children = (
 				20404F781A7E48DC009CC47B /* AppDelegate.swift */,
 				20404F7A1A7E48DC009CC47B /* ViewController.swift */,
+				20404F9A1A7E49F7009CC47B /* ChatRoomTableViewController.swift */,
+				20404F981A7E4971009CC47B /* MessageView.swift */,
 				20404F7C1A7E48DC009CC47B /* Main.storyboard */,
 				20404F7F1A7E48DC009CC47B /* Images.xcassets */,
 				20404F811A7E48DC009CC47B /* LaunchScreen.xib */,
 				20404F761A7E48DC009CC47B /* Supporting Files */,
+				20404F9C1A7E5E5B009CC47B /* MessageInfo.swift */,
 			);
 			path = QQchat;
 			sourceTree = "<group>";
@@ -212,6 +221,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20404F9B1A7E49F7009CC47B /* ChatRoomTableViewController.swift in Sources */,
+				20404F991A7E4971009CC47B /* MessageView.swift in Sources */,
+				20404F9D1A7E5E5B009CC47B /* MessageInfo.swift in Sources */,
 				20404F7B1A7E48DC009CC47B /* ViewController.swift in Sources */,
 				20404F791A7E48DC009CC47B /* AppDelegate.swift in Sources */,
 			);
