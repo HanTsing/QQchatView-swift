@@ -14,8 +14,18 @@ class ChatRoomTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        var image = UIImage(named: "chat_bg_default")
-//        self.tableView.backgroundView = UIImageView(image: image!)
+        messages.append(MessageInfo(content: "sdfasdf",status: false))
+        messages.append(MessageInfo(content: "sdfasdf",status: false))
+        messages.append(MessageInfo(content: "sdfasdf",status: false))
+        messages.append(MessageInfo(content: "sdfasdf",status: true))
+        messages.append(MessageInfo(content: "sdfasdf",status: false))
+        messages.append(MessageInfo(content: "sdfasdf",status: false))
+        messages.append(MessageInfo(content: "sdfasdf",status: false))
+        messages.append(MessageInfo(content: "sdfasdf",status: true))
+        messages.append(MessageInfo(content: "sdfasdf",status: false))
+        messages.append(MessageInfo(content: "sdfasdf",status: false))
+        messages.append(MessageInfo(content: "sdfasdf",status: false))
+        messages.append(MessageInfo(content: "sdfasdf",status: true))
         messages.append(MessageInfo(content: "sdfasdf",status: false))
         messages.append(MessageInfo(content: "sdfasdf",status: false))
         messages.append(MessageInfo(content: "sdfasdf",status: false))
@@ -51,7 +61,7 @@ class ChatRoomTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("messageCell", forIndexPath: indexPath) as UITableViewCell
-         var messageView = MessageView(messageInfo: messages[indexPath.row])
+        var messageView = MessageView(messageInfo: messages[indexPath.row], frame: cell.frame)
          cell.contentView.addSubview(messageView)
         return cell
     }

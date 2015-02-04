@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="GKp-YF-Unl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="OcA-5R-Dhm">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--QQ chat-->
@@ -30,74 +29,110 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PlB-wL-eOX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="747" y="338"/>
+            <point key="canvasLocation" x="693" y="338"/>
         </scene>
-        <!--Table View Controller-->
-        <scene sceneID="cQq-RP-Cji">
+        <!--QQChat-->
+        <scene sceneID="64I-rv-3A9">
             <objects>
-                <tableViewController id="IZt-Kr-Qb0" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="58" sectionHeaderHeight="22" sectionFooterHeight="22" id="vMl-nq-wlQ">
+                <viewController id="olf-P9-yKl" customClass="ChatRoomViewController" customModule="QQchat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="f3L-Re-hRo"/>
+                        <viewControllerLayoutGuide type="bottom" id="QYi-Y7-CJD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Cgf-XG-YD5">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="NZU-Sx-dJh">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="506"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="messageCell" id="B7e-JD-Imj">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="B7e-JD-Imj" id="fAz-if-2T1">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="olf-P9-yKl" id="dwG-oR-Yui"/>
+                                    <outlet property="delegate" destination="olf-P9-yKl" id="kNP-fg-Ohi"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QHh-tq-DT7">
+                                <rect key="frame" x="0.0" y="506" width="320" height="62"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="chat_bottom_up_nor" translatesAutoresizingMaskIntoConstraints="NO" id="dKi-pE-r4l">
+                                        <rect key="frame" x="273" y="6" width="45" height="50"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="chat_bottom_smile_nor" translatesAutoresizingMaskIntoConstraints="NO" id="eth-H9-DID">
+                                        <rect key="frame" x="220" y="6" width="45" height="50"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="chat_bottom_voice_nor" translatesAutoresizingMaskIntoConstraints="NO" id="ADS-91-b2N">
+                                        <rect key="frame" x="8" y="6" width="45" height="50"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <sections>
-                            <tableViewSection id="PVx-6t-0i0">
-                                <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="58" id="lK4-v4-kGK">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lK4-v4-kGK" id="AeC-V5-eoh">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gc3-jQ-Ta2">
-                                                    <rect key="frame" x="8" y="0.0" width="50" height="50"/>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v2f-m8-E8c">
-                                                    <rect key="frame" x="66" y="15" width="239" height="27"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="58" id="sfU-Nr-MgN">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sfU-Nr-MgN" id="lFj-Qu-Paz">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7rH-Qi-QFu">
-                                                    <rect key="frame" x="262" y="4" width="50" height="50"/>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7j5-MD-jzu">
-                                                    <rect key="frame" x="21" y="8" width="239" height="42"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="7j5-MD-jzu" firstAttribute="leading" secondItem="lFj-Qu-Paz" secondAttribute="leadingMargin" constant="13" id="Iwo-Rm-42b"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="58" id="2ik-To-aye">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2ik-To-aye" id="yUc-Zx-p9I">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
-                        <connections>
-                            <outlet property="dataSource" destination="IZt-Kr-Qb0" id="YjF-Rb-W1a"/>
-                            <outlet property="delegate" destination="IZt-Kr-Qb0" id="PMf-iA-kAW"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="W3c-fs-D3k" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="QQChat" id="JnW-5R-c0b"/>
+                    <connections>
+                        <outlet property="tableView" destination="NZU-Sx-dJh" id="PtU-m5-iRQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uwm-MB-Bgx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1188" y="333"/>
+            <point key="canvasLocation" x="1225" y="1014"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="yJC-Rz-K55">
+            <objects>
+                <viewController id="u6y-TA-1kO" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="G7y-B6-WXI"/>
+                        <viewControllerLayoutGuide type="bottom" id="S0q-La-Fep"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="joJ-nJ-dBy">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sx5-sF-thp">
+                                <rect key="frame" x="0.0" y="491" width="320" height="77"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="chat_bottom_voice_nor" translatesAutoresizingMaskIntoConstraints="NO" id="yw4-Jk-JF9">
+                                        <rect key="frame" x="20" y="11" width="48" height="55"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="chat_bottom_up_nor" translatesAutoresizingMaskIntoConstraints="NO" id="FRt-Up-gZI">
+                                        <rect key="frame" x="272" y="11" width="40" height="50"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="chat_bottom_smile_nor" translatesAutoresizingMaskIntoConstraints="NO" id="zbB-nr-72e">
+                                        <rect key="frame" x="224" y="11" width="40" height="50"/>
+                                    </imageView>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入...." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c29-x3-eQx">
+                                        <rect key="frame" x="71" y="24" width="152" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="77" id="1gG-Au-dg0"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="sx5-sF-thp" firstAttribute="leading" secondItem="joJ-nJ-dBy" secondAttribute="leading" id="Y4r-Ob-6Ia"/>
+                            <constraint firstItem="sx5-sF-thp" firstAttribute="bottom" secondItem="S0q-La-Fep" secondAttribute="top" id="k1f-mv-KM7"/>
+                            <constraint firstAttribute="trailing" secondItem="sx5-sF-thp" secondAttribute="trailing" id="tNn-JE-ZfD"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="axW-dd-bhA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1145" y="338"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="yI3-Jv-Jjo">
@@ -117,7 +152,30 @@
             </objects>
             <point key="canvasLocation" x="215" y="338"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="nkW-r2-hWj">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="OcA-5R-Dhm" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JBM-JU-Trd">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="olf-P9-yKl" kind="relationship" relationship="rootViewController" id="r0z-Y3-f3b"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dfk-YC-u8Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="693" y="1014"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="chat_bottom_smile_nor" width="34" height="34"/>
+        <image name="chat_bottom_up_nor" width="34" height="34"/>
+        <image name="chat_bottom_voice_nor" width="34" height="34"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

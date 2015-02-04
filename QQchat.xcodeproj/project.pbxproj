@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2016AD631A820C4500737BEE /* ChatRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2016AD621A820C4500737BEE /* ChatRoomViewController.swift */; };
 		20404F791A7E48DC009CC47B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20404F781A7E48DC009CC47B /* AppDelegate.swift */; };
 		20404F7B1A7E48DC009CC47B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20404F7A1A7E48DC009CC47B /* ViewController.swift */; };
 		20404F7E1A7E48DC009CC47B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20404F7C1A7E48DC009CC47B /* Main.storyboard */; };
@@ -29,6 +30,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2016AD621A820C4500737BEE /* ChatRoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatRoomViewController.swift; sourceTree = "<group>"; };
 		20404F731A7E48DC009CC47B /* QQchat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QQchat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20404F771A7E48DC009CC47B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20404F781A7E48DC009CC47B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 				20404F811A7E48DC009CC47B /* LaunchScreen.xib */,
 				20404F761A7E48DC009CC47B /* Supporting Files */,
 				20404F9C1A7E5E5B009CC47B /* MessageInfo.swift */,
+				2016AD621A820C4500737BEE /* ChatRoomViewController.swift */,
 			);
 			path = QQchat;
 			sourceTree = "<group>";
@@ -226,6 +229,7 @@
 				20404F9D1A7E5E5B009CC47B /* MessageInfo.swift in Sources */,
 				20404F7B1A7E48DC009CC47B /* ViewController.swift in Sources */,
 				20404F791A7E48DC009CC47B /* AppDelegate.swift in Sources */,
+				2016AD631A820C4500737BEE /* ChatRoomViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,6 +423,7 @@
 				20404F941A7E48DC009CC47B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		20404F951A7E48DC009CC47B /* Build configuration list for PBXNativeTarget "QQchatTests" */ = {
 			isa = XCConfigurationList;
@@ -427,6 +432,7 @@
 				20404F971A7E48DC009CC47B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
