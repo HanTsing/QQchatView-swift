@@ -12,7 +12,8 @@ class MessageView: UIView {
     
     var avatar: UIImageView!
     var contentLabel: UILabel!
-    var contentImage: UIImage!
+    var contentImageView: UIImageView!
+
     
     /*
     // Only override drawRect: if you perform custom drawing.
@@ -25,15 +26,9 @@ class MessageView: UIView {
     init(messageInfo: MessageInfo) {
         super.init(frame: CGRect(x: 0, y: 0, width: 320, height: 200))
         if messageInfo.status {
-            self.avatar = UIImageView(frame: CGRect(x: 262, y: 4, width: 50, height: 50))
-            self.avatar.image = UIImage(named: "icon02")
-            self.addSubview(avatar)
-            setChatModel(messageInfo)
+            setSelfChatMsgView(messageInfo)
         } else {
-            self.avatar = UIImageView(frame: CGRect(x: 8, y: 0, width: 50, height: 50))
-            self.avatar.image = UIImage(named: "icon01")
-            self.addSubview(avatar)
-            setChatModel(messageInfo)
+           setOtherChatMsgView(messageInfo)
         }
     }
 
@@ -42,52 +37,136 @@ class MessageView: UIView {
         super.init(coder: aDecoder)
     }
     
-    
-    func setChatModel(messageInfo: MessageInfo){
-        if messageInfo.status {
-             self.contentLabel = UILabel(frame: CGRect(x: 66, y: 14, width: 246, height: 27))
-             self.contentLabel.textAlignment = NSTextAlignment.Right
-             self.contentImage = UIImage(named: "chatto_bg_normal")
-        } else {
-            self.contentLabel = UILabel(frame: CGRect(x: 15, y: 8, width: 246, height: 27))
-            self.contentLabel.textAlignment = NSTextAlignment.Left
-            self.contentImage = UIImage(named: "chatfrom_bg_normal")
-        }
-       
+    func setSelfChatMsgView(messageInfo: MessageInfo){
+        
+        var contentImage = UIImage(named: "chatto_bg_normal")
+        self.contentImageView = UIImageView(image: contentImage)
+        self.addSubview(contentImageView)
+        
+        self.avatar = UIImageView()
+        self.avatar.image = UIImage(named: "icon02")
+        self.addSubview(avatar)
+        
+        self.contentLabel = UILabel()
+        self.contentLabel.textAlignment = NSTextAlignment.Right
+        
         self.contentLabel.text = messageInfo.content
         self.contentLabel.font = UIFont(name:"Arial" , size: 14)
         self.contentLabel.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        self.contentLabel.numberOfLines = 0
+        self.contentImageView.addSubview(contentLabel)
         
-        
-        var  attributes = [NSFontAttributeName:self.contentLabel.font]
         
         var size = CGSizeMake(200,CGFloat.max)
-        var rect = messageInfo.content.boundingRectWithSize(size, options: .UsesLineFragmentOrigin, attributes: attributes, context: nil)
-        var msgHeight = rect.size.height //rect.size.height < 30 ? 30 : rect.size.height
-        let myInsets : UIEdgeInsets = UIEdgeInsetsMake(10, 25, 10, 25)
-        contentImage?.resizableImageWithCapInsets(myInsets)
+        var attributes = [NSFontAttributeName: self.contentLabel.font]
+        var contentText:NSString = self.contentLabel.text as NSString!
+        var rect = contentText.boundingRectWithSize(size, options:.UsesLineFragmentOrigin, attributes: attributes, context:nil)
+        var msgHeight: CGFloat = rect.size.height
+        
+        let myInsets : UIEdgeInsets = UIEdgeInsetsMake(10, 30, 10, 30)
+        self.contentImageView.image?.resizableImageWithCapInsets(myInsets)
 
-        var contentImageView   = UIImageView(image: contentImage!)
-        contentImageView.frame =  CGRect(x: 66, y: 14, width: 246, height: 27)
-        self.addSubview(contentImageView)
-        self.addSubview(contentLabel)
+  
         
-        
-        self.contentLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
         self.avatar.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.contentLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.contentImageView.setTranslatesAutoresizingMaskIntoConstraints(false)
         
-        let viewsDictionary = ["left":self.contentLabel ,"right": self.avatar]
+        let viewsDictionary = ["avatar": avatar, "label": contentLabel, "image": contentImageView]
         
-        //position constraints
-        let view_constraint_H:NSArray = NSLayoutConstraint.constraintsWithVisualFormat("V:|-10-[left]-10-|", options: NSLayoutFormatOptions(0), metrics: nil, views: viewsDictionary)
-        let view_constraint_H2:NSArray = NSLayoutConstraint.constraintsWithVisualFormat("V:|-10-[right]-10-|", options: NSLayoutFormatOptions(0), metrics: nil, views: viewsDictionary)
+        
+        let avatar_constraint_H:NSArray = NSLayoutConstraint.constraintsWithVisualFormat("[avatar(50)]-5-|", options: NSLayoutFormatOptions(0), metrics: nil, views: viewsDictionary)
+        let avatar_constraint_V:NSArray = NSLayoutConstraint.constraintsWithVisualFormat("V:|-5-[avatar(50)]", options: NSLayoutFormatOptions(0), metrics: nil, views: viewsDictionary)
+        
+        let image_constraint_H:NSArray = NSLayoutConstraint.constraintsWithVisualFormat("[image]-10-[avatar]", options: NSLayoutFormatOptions(0), metrics: nil, views: viewsDictionary)
+        let image_constraint_V:NSArray = NSLayoutConstraint.constraintsWithVisualFormat("V:|-5-[image]", options: NSLayoutFormatOptions(0), metrics: nil, views: viewsDictionary)
+        
+        let image_constraint_H1:NSArray = NSLayoutConstraint.constraintsWithVisualFormat("[image(\(rect.size.width + 35))]", options: NSLayoutFormatOptions(0), metrics: nil, views: viewsDictionary)
+        let image_constraint_V1:NSArray = NSLayoutConstraint.constraintsWithVisualFormat("V:[image(\(msgHeight + 20))]", options: NSLayoutFormatOptions(0), metrics: nil, views: viewsDictionary)
+        
+      
 
+        let label_constraint_H:NSArray = NSLayoutConstraint.constraintsWithVisualFormat("|-5-[label]-25-|", options: NSLayoutFormatOptions(0), metrics: nil, views: viewsDictionary)
+        let label_constraint_V:NSArray = NSLayoutConstraint.constraintsWithVisualFormat("V:|[label]-5-|", options: NSLayoutFormatOptions(0), metrics: nil, views: viewsDictionary)
         
-        self.addConstraints(view_constraint_H)
-        self.addConstraints(view_constraint_H2)
+    
+        
+        self.addConstraints(avatar_constraint_H)
+        self.addConstraints(avatar_constraint_V)
+        self.addConstraints(image_constraint_H)
+        self.addConstraints(image_constraint_V)
+        self.addConstraints(image_constraint_H1)
+        self.addConstraints(image_constraint_V1)
+        self.contentImageView.addConstraints(label_constraint_H)
+        self.contentImageView.addConstraints(label_constraint_V)
+          
+    }
+    
+    func setOtherChatMsgView(messageInfo: MessageInfo){
+       
+        var contentImage = UIImage(named: "chatfrom_bg_normal")
+        self.contentImageView = UIImageView(image: contentImage)
+        self.addSubview(contentImageView)
+        
+        self.avatar = UIImageView()
+        self.avatar.image = UIImage(named: "icon01")
+        self.addSubview(avatar)
+        
+        self.contentLabel = UILabel()
+        self.contentLabel.textAlignment = NSTextAlignment.Left
+        
+        self.contentLabel.text = messageInfo.content
+        self.contentLabel.font = UIFont(name:"Arial" , size: 14)
+        self.contentLabel.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        self.contentLabel.numberOfLines = 0
+        self.contentImageView.addSubview(contentLabel)
+        
+        
+        var size = CGSizeMake(200,CGFloat.max)
+        var attributes = [NSFontAttributeName: self.contentLabel.font]
+        var contentText:NSString = self.contentLabel.text as NSString!
+        var rect = contentText.boundingRectWithSize(size, options:.UsesLineFragmentOrigin, attributes: attributes, context:nil)
+        var msgHeight: CGFloat = rect.size.height
+        
+        let myInsets : UIEdgeInsets = UIEdgeInsetsMake(10, 30, 10, 30)
+        self.contentImageView.image?.resizableImageWithCapInsets(myInsets)
+        
 
+        self.avatar.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.contentLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.contentImageView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        
+        let viewsDictionary = ["avatar": avatar, "label": contentLabel, "image": contentImageView]
+        
+        
+        let avatar_constraint_H:NSArray = NSLayoutConstraint.constraintsWithVisualFormat("|-5-[avatar(50)]", options: NSLayoutFormatOptions(0), metrics: nil, views: viewsDictionary)
+        let avatar_constraint_V:NSArray = NSLayoutConstraint.constraintsWithVisualFormat("V:|-5-[avatar(50)]", options: NSLayoutFormatOptions(0), metrics: nil, views: viewsDictionary)
+        
+        let image_constraint_H:NSArray = NSLayoutConstraint.constraintsWithVisualFormat("[avatar]-10-[image]", options: NSLayoutFormatOptions(0), metrics: nil, views: viewsDictionary)
+        let image_constraint_V:NSArray = NSLayoutConstraint.constraintsWithVisualFormat("V:|-5-[image]", options: NSLayoutFormatOptions(0), metrics: nil, views: viewsDictionary)
+        
+        let image_constraint_H1:NSArray = NSLayoutConstraint.constraintsWithVisualFormat("[image(\(rect.size.width + 35))]", options: NSLayoutFormatOptions(0), metrics: nil, views: viewsDictionary)
+        let image_constraint_V1:NSArray = NSLayoutConstraint.constraintsWithVisualFormat("V:[image(\(msgHeight + 20))]", options: NSLayoutFormatOptions(0), metrics: nil, views: viewsDictionary)
+        
+        
+        
+        let label_constraint_H:NSArray = NSLayoutConstraint.constraintsWithVisualFormat("|-25-[label]-5-|", options: NSLayoutFormatOptions(0), metrics: nil, views: viewsDictionary)
+        let label_constraint_V:NSArray = NSLayoutConstraint.constraintsWithVisualFormat("V:|-5-[label]|", options: NSLayoutFormatOptions(0), metrics: nil, views: viewsDictionary)
+        
+        
+        
+        self.addConstraints(avatar_constraint_H)
+        self.addConstraints(avatar_constraint_V)
+        self.addConstraints(image_constraint_H)
+        self.addConstraints(image_constraint_V)
+        self.addConstraints(image_constraint_H1)
+        self.addConstraints(image_constraint_V1)
+        self.contentImageView.addConstraints(label_constraint_H)
+        self.contentImageView.addConstraints(label_constraint_V)
         
     }
+    
+    
     
     
 }

@@ -16,11 +16,12 @@ class ChatRoomTableViewController: UITableViewController {
         super.viewDidLoad()
 //        var image = UIImage(named: "chat_bg_default")
 //        self.tableView.backgroundView = UIImageView(image: image!)
+        messages.append(MessageInfo(content: "sdfasdf",status: false))
+        messages.append(MessageInfo(content: "sdfasdf",status: false))
+        messages.append(MessageInfo(content: "sdfasdf",status: false))
         messages.append(MessageInfo(content: "sdfasdf",status: true))
-        messages.append(MessageInfo(content: "sdfasdf",status: true))
-        messages.append(MessageInfo(content: "sdfasdf",status: true))
-        messages.append(MessageInfo(content: "sdfasdf",status: true))
-        messages.append(MessageInfo(content: "7777777",status: true))
+        messages.append(MessageInfo(content: "777777777777777777777777777777777777777777777777777777777777777777777777777",status: true))
+        self.tableView.rowHeight = UITableViewAutomaticDimension
     }
     
 
@@ -35,6 +36,10 @@ class ChatRoomTableViewController: UITableViewController {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
         return 1
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 60
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
