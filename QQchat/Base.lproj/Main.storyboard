@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="OcA-5R-Dhm">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--QQ chat-->
@@ -39,11 +40,11 @@
                         <viewControllerLayoutGuide type="top" id="f3L-Re-hRo"/>
                         <viewControllerLayoutGuide type="bottom" id="QYi-Y7-CJD"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Cgf-XG-YD5">
+                    <view key="view" contentMode="scaleToFill" id="Cgf-XG-YD5" customClass="UIControl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="NZU-Sx-dJh">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="NZU-Sx-dJh">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="506"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -59,80 +60,77 @@
                                     <outlet property="delegate" destination="olf-P9-yKl" id="kNP-fg-Ohi"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QHh-tq-DT7">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QHh-tq-DT7">
                                 <rect key="frame" x="0.0" y="506" width="320" height="62"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="chat_bottom_up_nor" translatesAutoresizingMaskIntoConstraints="NO" id="dKi-pE-r4l">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chat_bottom_up_nor" translatesAutoresizingMaskIntoConstraints="NO" id="dKi-pE-r4l">
                                         <rect key="frame" x="273" y="6" width="45" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="45" id="qK6-u3-sRN"/>
+                                        </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="chat_bottom_smile_nor" translatesAutoresizingMaskIntoConstraints="NO" id="eth-H9-DID">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chat_bottom_smile_nor" translatesAutoresizingMaskIntoConstraints="NO" id="eth-H9-DID">
                                         <rect key="frame" x="220" y="6" width="45" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="45" id="pWL-1I-PeD"/>
+                                        </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="chat_bottom_voice_nor" translatesAutoresizingMaskIntoConstraints="NO" id="ADS-91-b2N">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入..." minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Rk2-m9-xgW">
+                                        <rect key="frame" x="61" y="16" width="156" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="send"/>
+                                        <connections>
+                                            <action selector="sendMessage:" destination="olf-P9-yKl" eventType="editingDidEndOnExit" id="jTU-Aq-bQZ"/>
+                                        </connections>
+                                    </textField>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chat_bottom_voice_nor" translatesAutoresizingMaskIntoConstraints="NO" id="ADS-91-b2N">
                                         <rect key="frame" x="8" y="6" width="45" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="45" id="4Ab-c9-1Q6"/>
+                                        </constraints>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="dKi-pE-r4l" firstAttribute="leading" secondItem="eth-H9-DID" secondAttribute="trailing" constant="8" symbolic="YES" id="1yb-bU-eSB"/>
+                                    <constraint firstItem="eth-H9-DID" firstAttribute="bottom" secondItem="ADS-91-b2N" secondAttribute="bottom" id="3gr-Cy-L7k"/>
+                                    <constraint firstItem="ADS-91-b2N" firstAttribute="top" secondItem="QHh-tq-DT7" secondAttribute="top" constant="6" id="4fZ-vr-Rsj"/>
+                                    <constraint firstItem="ADS-91-b2N" firstAttribute="leading" secondItem="QHh-tq-DT7" secondAttribute="leadingMargin" id="6oq-dI-0gh"/>
+                                    <constraint firstItem="Rk2-m9-xgW" firstAttribute="leading" secondItem="ADS-91-b2N" secondAttribute="trailing" constant="8" symbolic="YES" id="Js2-7T-NMU"/>
+                                    <constraint firstItem="ADS-91-b2N" firstAttribute="centerY" secondItem="QHh-tq-DT7" secondAttribute="centerY" id="Lb0-LJ-FHE"/>
+                                    <constraint firstAttribute="trailing" secondItem="dKi-pE-r4l" secondAttribute="trailing" constant="2" id="Pdf-jZ-EyU"/>
+                                    <constraint firstItem="eth-H9-DID" firstAttribute="centerY" secondItem="Rk2-m9-xgW" secondAttribute="centerY" id="UhJ-cO-rPX"/>
+                                    <constraint firstItem="eth-H9-DID" firstAttribute="leading" secondItem="Rk2-m9-xgW" secondAttribute="trailing" constant="3" id="dup-m4-nKj"/>
+                                    <constraint firstItem="dKi-pE-r4l" firstAttribute="bottom" secondItem="eth-H9-DID" secondAttribute="bottom" id="gbn-lI-Oja"/>
+                                    <constraint firstItem="eth-H9-DID" firstAttribute="top" secondItem="dKi-pE-r4l" secondAttribute="top" id="rBT-h2-E8H"/>
+                                    <constraint firstItem="ADS-91-b2N" firstAttribute="top" secondItem="eth-H9-DID" secondAttribute="top" id="x3L-nm-D8f"/>
+                                    <constraint firstItem="Rk2-m9-xgW" firstAttribute="top" secondItem="QHh-tq-DT7" secondAttribute="top" constant="16" id="zLZ-0N-RLa"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="QHh-tq-DT7" firstAttribute="top" secondItem="NZU-Sx-dJh" secondAttribute="bottom" id="8Us-pQ-VBf"/>
+                            <constraint firstAttribute="trailing" secondItem="QHh-tq-DT7" secondAttribute="trailing" id="Bpo-pT-Jr7"/>
+                            <constraint firstItem="NZU-Sx-dJh" firstAttribute="leading" secondItem="Cgf-XG-YD5" secondAttribute="leading" id="Dg6-s4-Kyp"/>
+                            <constraint firstItem="QHh-tq-DT7" firstAttribute="bottom" secondItem="QYi-Y7-CJD" secondAttribute="top" id="KQ1-oE-KCX"/>
+                            <constraint firstItem="NZU-Sx-dJh" firstAttribute="top" secondItem="Cgf-XG-YD5" secondAttribute="top" id="YEd-Mw-8fh"/>
+                            <constraint firstItem="QHh-tq-DT7" firstAttribute="trailing" secondItem="NZU-Sx-dJh" secondAttribute="trailing" id="sut-Y1-Jw4"/>
+                            <constraint firstItem="NZU-Sx-dJh" firstAttribute="leading" secondItem="QHh-tq-DT7" secondAttribute="leading" id="yER-o2-UOG"/>
+                        </constraints>
+                        <connections>
+                            <action selector="cancleKeyboard:" destination="olf-P9-yKl" eventType="touchDown" id="IgE-ma-jJ8"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="QQChat" id="JnW-5R-c0b"/>
                     <connections>
+                        <outlet property="msgTextField" destination="Rk2-m9-xgW" id="Z4c-55-xdO"/>
                         <outlet property="tableView" destination="NZU-Sx-dJh" id="PtU-m5-iRQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uwm-MB-Bgx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1225" y="1014"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="yJC-Rz-K55">
-            <objects>
-                <viewController id="u6y-TA-1kO" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="G7y-B6-WXI"/>
-                        <viewControllerLayoutGuide type="bottom" id="S0q-La-Fep"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="joJ-nJ-dBy">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sx5-sF-thp">
-                                <rect key="frame" x="0.0" y="491" width="320" height="77"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="chat_bottom_voice_nor" translatesAutoresizingMaskIntoConstraints="NO" id="yw4-Jk-JF9">
-                                        <rect key="frame" x="20" y="11" width="48" height="55"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="chat_bottom_up_nor" translatesAutoresizingMaskIntoConstraints="NO" id="FRt-Up-gZI">
-                                        <rect key="frame" x="272" y="11" width="40" height="50"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="chat_bottom_smile_nor" translatesAutoresizingMaskIntoConstraints="NO" id="zbB-nr-72e">
-                                        <rect key="frame" x="224" y="11" width="40" height="50"/>
-                                    </imageView>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入...." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c29-x3-eQx">
-                                        <rect key="frame" x="71" y="24" width="152" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="77" id="1gG-Au-dg0"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="sx5-sF-thp" firstAttribute="leading" secondItem="joJ-nJ-dBy" secondAttribute="leading" id="Y4r-Ob-6Ia"/>
-                            <constraint firstItem="sx5-sF-thp" firstAttribute="bottom" secondItem="S0q-La-Fep" secondAttribute="top" id="k1f-mv-KM7"/>
-                            <constraint firstAttribute="trailing" secondItem="sx5-sF-thp" secondAttribute="trailing" id="tNn-JE-ZfD"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="axW-dd-bhA" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1145" y="338"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="yI3-Jv-Jjo">

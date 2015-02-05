@@ -31,6 +31,7 @@ class ChatRoomTableViewController: UITableViewController {
         messages.append(MessageInfo(content: "sdfasdf",status: false))
         messages.append(MessageInfo(content: "sdfasdf",status: true))
         messages.append(MessageInfo(content: "777777777777777777777777777777777777777777777777777777777777777777777777777",status: true))
+        self.tableView.estimatedRowHeight = 40
         self.tableView.rowHeight = UITableViewAutomaticDimension
     }
     
@@ -48,9 +49,9 @@ class ChatRoomTableViewController: UITableViewController {
         return 1
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 60
-    }
+//    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        return 60
+//    }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.

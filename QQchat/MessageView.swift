@@ -5,7 +5,7 @@
 //  Created by hanqing on 2/1/15.
 //  Copyright (c) 2015 hanqing. All rights reserved.
 //  问题1  每个cell创建的时候都会新建 messageView  会不会有性能问题
-
+//  问题2  用tableview  在sb中不能在底部拖入一个uiview？
 
 import UIKit
 
