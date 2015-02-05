@@ -29,18 +29,37 @@ class ChatRoomViewController: UIViewController, UITableViewDataSource, UITableVi
         messages.append(MessageInfo(content: "sdfasdf",status: false))
         messages.append(MessageInfo(content: "sdfasdf",status: false))
         messages.append(MessageInfo(content: "sdfasdf",status: false))
-        messages.append(MessageInfo(content: "sdfasdfsdfasdfsdfasdfsdfasdfsdfasdfsdfasdfsdfasdf",status: false))
+        messages.append(MessageInfo(content: "sdfasdf",status: false))
+        messages.append(MessageInfo(content: "sdfasdf",status: false))
+        messages.append(MessageInfo(content: "sdfasdf",status: false))
+        messages.append(MessageInfo(content: "sdfasdf",status: false))
+        messages.append(MessageInfo(content: "sdfasdf",status: false))
+        messages.append(MessageInfo(content: "sdfasdf",status: false))
+        messages.append(MessageInfo(content: "sdfasdf",status: false))
+        messages.append(MessageInfo(content: "sdfasdf",status: false))
+        messages.append(MessageInfo(content: "sdfasdf",status: false))
+        messages.append(MessageInfo(content: "sdfasdf",status: false))
+        messages.append(MessageInfo(content: "sdfasdf",status: false))
+        messages.append(MessageInfo(content: "sdfasdf",status: false))
+        messages.append(MessageInfo(content: "sdfasdf",status: false))
+        messages.append(MessageInfo(content: "sdfasdf",status: false))
+        messages.append(MessageInfo(content: "sdfasdf",status: false))
+        messages.append(MessageInfo(content: "sdfasdf",status: false))
+        messages.append(MessageInfo(content: "sdfasdf",status: false))
+        messages.append(MessageInfo(content: "sdfasdfsdfasdfsdf",status: false))
         messages.append(MessageInfo(content: "sdfasdf",status: false))
         messages.append(MessageInfo(content: "sdfasdf",status: true))
         messages.append(MessageInfo(content: "777777777777777777777777777777777777777777",status: true))
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardShow", name: UIKeyboardDidShowNotification, object: nil)
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardHide", name: UIKeyboardDidHideNotification, object: nil)
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardChange", name: UIKeyboardDidChangeFrameNotification, object: nil)
-        self.tableView.estimatedRowHeight = 30
+
+        self.tableView.estimatedRowHeight = 60
         self.tableView.rowHeight = UITableViewAutomaticDimension
         
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "dismissKeyboard:", name: UIKeyboardWillChangeFrameNotification, object: nil)
+        
+        
+        var indexPath = NSIndexPath(forRow: messages.count-1, inSection:0)
+        self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
         
     }
     
@@ -52,9 +71,8 @@ class ChatRoomViewController: UIViewController, UITableViewDataSource, UITableVi
             self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
             self.msgTextField.text = ""
             self.msgTextField.isFirstResponder()
-            
 
-//            self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
+           self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
             
         }
     }
@@ -91,7 +109,8 @@ class ChatRoomViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("messageCell", forIndexPath: indexPath) as UITableViewCell
+        //let cell = tableView.dequeueReusableCellWithIdentifier("messageCell", forIndexPath: indexPath) as UITableViewCell
+        let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "reuse")
         var messageView = MessageView(messageInfo: messages[indexPath.row], frame: cell.frame)
         cell.contentView.addSubview(messageView)
         return cell
@@ -102,9 +121,9 @@ class ChatRoomViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 30
+        return 60
     }
-        
+    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
       return 1
     }
