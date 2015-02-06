@@ -9,7 +9,7 @@
 import Foundation
 class MessageInfo {
     var content: NSString = ""
-    var status  = false
+    var status  = false //是否是自己发送的消息
     
     init(content: String, status: Bool){
        self.content = content

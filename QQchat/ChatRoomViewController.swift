@@ -4,9 +4,6 @@
 //
 //  Created by hanqing on 2/4/15.
 //  Copyright (c) 2015 hanqing. All rights reserved.
-// todo
-//      3 横屏时      有点问题
-//      4 tableview  动态计算间距
 
 
 
@@ -22,21 +19,10 @@ class ChatRoomViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        messages.append(MessageInfo(content: "sdfasdf",status: false))
-        messages.append(MessageInfo(content: "sdfasdf",status: false))
+        messages.append(MessageInfo(content: "sdfasdf",status: true))
         messages.append(MessageInfo(content: "sdfasdf",status: false))
         messages.append(MessageInfo(content: "sdfasdf",status: true))
         messages.append(MessageInfo(content: "sdfasdf",status: false))
-        messages.append(MessageInfo(content: "sdfasdf",status: false))
-        messages.append(MessageInfo(content: "sdfasdf",status: false))
-        messages.append(MessageInfo(content: "sdfasdf",status: false))
-        messages.append(MessageInfo(content: "sdfasdf",status: false))
-        messages.append(MessageInfo(content: "sdfasdf",status: true))
-        messages.append(MessageInfo(content: "sdfasdf",status: false))
-        messages.append(MessageInfo(content: "sdfasdf",status: false))
-        messages.append(MessageInfo(content: "sdfasdfsdfasdfsdf",status: false))
-        messages.append(MessageInfo(content: "sdfasdf",status: false))
-        messages.append(MessageInfo(content: "sdfasdf",status: true))
         messages.append(MessageInfo(content: "777777777777777777777777777777777777777777",status: true))
 
         self.tableView.estimatedRowHeight = 60
@@ -93,8 +79,8 @@ class ChatRoomViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        //let cell = tableView.dequeueReusableCellWithIdentifier("messageCell", forIndexPath: indexPath) as UITableViewCell
-        let cell = MsgCellTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "reuse")
+        let cell = tableView.dequeueReusableCellWithIdentifier("messageCell", forIndexPath: indexPath) as MsgCellTableViewCell
+        //let cell = MsgCellTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "reuse")
         cell.messageInfo = messages[indexPath.row]
         
         return cell

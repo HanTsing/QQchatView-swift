@@ -6,7 +6,6 @@
 //  Copyright (c) 2015 hanqing. All rights reserved.
 //  问题1  每个cell创建的时候都会新建 messageView  会不会有性能问题
 //  问题2  用tableview  在sb中不能在底部拖入一个uiview？
-//  问题3  cell现在不是 复用的
 //  问题4  图片切片
 //  didset
 
@@ -65,19 +64,20 @@ class MessageView: UIView {
         var label_constraint_H_Format  =  ""
         var label_constraint_V_Fromat  =  ""
         
+        
         if messageInfo.status {
             avatar_constraint_H_Format =  "[avatar(50)]-5-|"
             avatar_constraint_V_Format =  "V:|-5-[avatar(50)]"
-            image_constraint_H_Format  =  "|-5-[image]-10-[avatar]"
+            image_constraint_H_Format  =  "|-(>=5)-[image]-10-[avatar]"
             image_constraint_V_Format  =  "V:|-5-[image(>=50)]-5-|"
-            label_constraint_H_Format  =  "|-5-[label]-25-|"
+            label_constraint_H_Format  =  "|-(>=5)-[label]-25-|"
             label_constraint_V_Fromat  =  "V:|[label]-5-|"
         } else {
             avatar_constraint_H_Format =  "|-5-[avatar(50)]"
             avatar_constraint_V_Format =  "V:|-5-[avatar(50)]"
-            image_constraint_H_Format  =  "[avatar]-10-[image]-5-|"
+            image_constraint_H_Format  =  "[avatar]-10-[image]-(>=5)-|"
             image_constraint_V_Format  =  "V:|-5-[image(>=50)]-5-|"
-            label_constraint_H_Format  =  "|-25-[label]-5-|"
+            label_constraint_H_Format  =  "|-25-[label]-(>=5)-|"
             label_constraint_V_Fromat  =  "V:|-5-[label]|"
         }
         

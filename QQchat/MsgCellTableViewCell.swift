@@ -15,15 +15,16 @@ class MsgCellTableViewCell: UITableViewCell {
         
         
         didSet{
-            print("\(messageInfo)");
+            
             if((messageView) != nil){
                 messageView.removeFromSuperview()
             }
+            
             messageView = MessageView()
             messageView.setTranslatesAutoresizingMaskIntoConstraints(false)
             messageView.messageInfo = messageInfo
-            messageView.backgroundColor = UIColor.redColor()
-            self.contentView.backgroundColor = UIColor.blueColor()
+//            messageView.backgroundColor = UIColor.redColor()
+//            self.contentView.backgroundColor = UIColor.blueColor()
             self.contentView.addSubview(messageView)
             let viewsDictionary = ["msgView": messageView]
             
