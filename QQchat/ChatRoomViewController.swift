@@ -4,12 +4,10 @@
 //
 //  Created by hanqing on 2/4/15.
 //  Copyright (c) 2015 hanqing. All rights reserved.
-// todo 1 发送完消息  屏幕到最底部
-//      2 点击空白    键盘消失
+// todo
 //      3 横屏时      有点问题
 //      4 tableview  动态计算间距
-//      5 bug        拖动cell时 空白
-//      6 bug        拖动有问题
+
 
 
 import UIKit
@@ -27,23 +25,13 @@ class ChatRoomViewController: UIViewController, UITableViewDataSource, UITableVi
         messages.append(MessageInfo(content: "sdfasdf",status: false))
         messages.append(MessageInfo(content: "sdfasdf",status: false))
         messages.append(MessageInfo(content: "sdfasdf",status: false))
+        messages.append(MessageInfo(content: "sdfasdf",status: true))
         messages.append(MessageInfo(content: "sdfasdf",status: false))
         messages.append(MessageInfo(content: "sdfasdf",status: false))
         messages.append(MessageInfo(content: "sdfasdf",status: false))
         messages.append(MessageInfo(content: "sdfasdf",status: false))
         messages.append(MessageInfo(content: "sdfasdf",status: false))
-        messages.append(MessageInfo(content: "sdfasdf",status: false))
-        messages.append(MessageInfo(content: "sdfasdf",status: false))
-        messages.append(MessageInfo(content: "sdfasdf",status: false))
-        messages.append(MessageInfo(content: "sdfasdf",status: false))
-        messages.append(MessageInfo(content: "sdfasdf",status: false))
-        messages.append(MessageInfo(content: "sdfasdf",status: false))
-        messages.append(MessageInfo(content: "sdfasdf",status: false))
-        messages.append(MessageInfo(content: "sdfasdf",status: false))
-        messages.append(MessageInfo(content: "sdfasdf",status: false))
-        messages.append(MessageInfo(content: "sdfasdf",status: false))
-        messages.append(MessageInfo(content: "sdfasdf",status: false))
-        messages.append(MessageInfo(content: "sdfasdf",status: false))
+        messages.append(MessageInfo(content: "sdfasdf",status: true))
         messages.append(MessageInfo(content: "sdfasdf",status: false))
         messages.append(MessageInfo(content: "sdfasdf",status: false))
         messages.append(MessageInfo(content: "sdfasdfsdfasdfsdf",status: false))
@@ -70,19 +58,15 @@ class ChatRoomViewController: UIViewController, UITableViewDataSource, UITableVi
             messages.append(MessageInfo(content: self.msgTextField.text, status: true))
             self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
             self.msgTextField.text = ""
-            self.msgTextField.isFirstResponder()
-
-           self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
+            self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
             
         }
     }
     
     
-    @IBAction func cancleKeyboard(sender: UIControl) {
-        print("==============================")
-        self.msgTextField.resignFirstResponder()
+    @IBAction func cancleKeyboard(sender: UITapGestureRecognizer) {
+        msgTextField.resignFirstResponder()
     }
-    
     
     func dismissKeyboard(notify: NSNotification) {
         
@@ -113,6 +97,16 @@ class ChatRoomViewController: UIViewController, UITableViewDataSource, UITableVi
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "reuse")
         var messageView = MessageView(messageInfo: messages[indexPath.row], frame: cell.frame)
         cell.contentView.addSubview(messageView)
+        
+        let viewsDictionary = ["msgView": messageView]
+        
+        let avatar_constraint_H:NSArray = NSLayoutConstraint.constraintsWithVisualFormat("H:|[msgView]|", options: NSLayoutFormatOptions(0), metrics: nil, views: viewsDictionary)
+        let avatar_constraint_V:NSArray = NSLayoutConstraint.constraintsWithVisualFormat("V:|[msgView]|", options: NSLayoutFormatOptions(0), metrics: nil, views: viewsDictionary)
+        
+        cell.contentView.addConstraints(avatar_constraint_H)
+        cell.contentView.addConstraints(avatar_constraint_V)
+        
+        
         return cell
     }
     

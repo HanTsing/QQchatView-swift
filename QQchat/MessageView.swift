@@ -6,6 +6,9 @@
 //  Copyright (c) 2015 hanqing. All rights reserved.
 //  问题1  每个cell创建的时候都会新建 messageView  会不会有性能问题
 //  问题2  用tableview  在sb中不能在底部拖入一个uiview？
+//  问题3  cell现在不是 复用的
+//  问题4  图片切片
+//  didset
 
 import UIKit
 
@@ -26,7 +29,7 @@ class MessageView: UIView {
     */
     
     init(messageInfo: MessageInfo, frame: CGRect) {
-        super.init(frame: frame)
+        super.init(frame:frame)
         self.messageInfo = messageInfo
         setChatMsgView()
     }

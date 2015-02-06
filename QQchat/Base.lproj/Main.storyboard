@@ -40,11 +40,11 @@
                         <viewControllerLayoutGuide type="top" id="f3L-Re-hRo"/>
                         <viewControllerLayoutGuide type="bottom" id="QYi-Y7-CJD"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Cgf-XG-YD5" customClass="UIControl">
+                    <view key="view" contentMode="scaleToFill" id="Cgf-XG-YD5">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="NZU-Sx-dJh">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="NZU-Sx-dJh">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="506"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -60,22 +60,22 @@
                                     <outlet property="delegate" destination="olf-P9-yKl" id="kNP-fg-Ohi"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QHh-tq-DT7">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QHh-tq-DT7">
                                 <rect key="frame" x="0.0" y="506" width="320" height="62"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chat_bottom_up_nor" translatesAutoresizingMaskIntoConstraints="NO" id="dKi-pE-r4l">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="chat_bottom_up_nor" translatesAutoresizingMaskIntoConstraints="NO" id="dKi-pE-r4l">
                                         <rect key="frame" x="273" y="6" width="45" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="45" id="qK6-u3-sRN"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chat_bottom_smile_nor" translatesAutoresizingMaskIntoConstraints="NO" id="eth-H9-DID">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="chat_bottom_smile_nor" translatesAutoresizingMaskIntoConstraints="NO" id="eth-H9-DID">
                                         <rect key="frame" x="220" y="6" width="45" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="45" id="pWL-1I-PeD"/>
                                         </constraints>
                                     </imageView>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入..." minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Rk2-m9-xgW">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入..." minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Rk2-m9-xgW">
                                         <rect key="frame" x="61" y="16" width="156" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="send"/>
@@ -83,7 +83,7 @@
                                             <action selector="sendMessage:" destination="olf-P9-yKl" eventType="editingDidEndOnExit" id="jTU-Aq-bQZ"/>
                                         </connections>
                                     </textField>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chat_bottom_voice_nor" translatesAutoresizingMaskIntoConstraints="NO" id="ADS-91-b2N">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="chat_bottom_voice_nor" translatesAutoresizingMaskIntoConstraints="NO" id="ADS-91-b2N">
                                         <rect key="frame" x="8" y="6" width="45" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="45" id="4Ab-c9-1Q6"/>
@@ -109,6 +109,7 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="QHh-tq-DT7" firstAttribute="top" secondItem="NZU-Sx-dJh" secondAttribute="bottom" id="8Us-pQ-VBf"/>
                             <constraint firstAttribute="trailing" secondItem="QHh-tq-DT7" secondAttribute="trailing" id="Bpo-pT-Jr7"/>
@@ -119,7 +120,7 @@
                             <constraint firstItem="NZU-Sx-dJh" firstAttribute="leading" secondItem="QHh-tq-DT7" secondAttribute="leading" id="yER-o2-UOG"/>
                         </constraints>
                         <connections>
-                            <action selector="cancleKeyboard:" destination="olf-P9-yKl" eventType="touchDown" id="IgE-ma-jJ8"/>
+                            <outletCollection property="gestureRecognizers" destination="N2j-65-Lam" appends="YES" id="gVZ-Kj-1i9"/>
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" title="QQChat" id="JnW-5R-c0b"/>
@@ -129,6 +130,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uwm-MB-Bgx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="N2j-65-Lam">
+                    <connections>
+                        <action selector="cancleKeyboard:" destination="olf-P9-yKl" id="fV2-D6-4zl"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1225" y="1014"/>
         </scene>
