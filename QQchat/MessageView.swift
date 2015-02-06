@@ -17,27 +17,14 @@ class MessageView: UIView {
     var avatar: UIImageView!
     var contentLabel: UILabel!
     var contentImageView: UIImageView!
-    var messageInfo: MessageInfo!
-    
-    
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
-    // Drawing code
-    }
-    */
-    
-    init(messageInfo: MessageInfo, frame: CGRect) {
-        super.init(frame:frame)
-        self.messageInfo = messageInfo
-        setChatMsgView()
+    var messageInfo: MessageInfo! {
+        
+        didSet{
+            setChatMsgView()
+        }
     }
     
     
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
     
     func setChatMsgView(){
         
@@ -58,28 +45,16 @@ class MessageView: UIView {
         self.contentLabel.numberOfLines = 0
         self.contentImageView.addSubview(contentLabel)
         
-        var rect: CGRect = dynamicCaculateLabelRect()
-        
-        let myInsets : UIEdgeInsets = UIEdgeInsetsMake(10, 30, 10, 30)
-        self.contentImageView.image?.resizableImageWithCapInsets(myInsets)
-        
         self.avatar.setTranslatesAutoresizingMaskIntoConstraints(false)
         self.contentLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
         self.contentImageView.setTranslatesAutoresizingMaskIntoConstraints(false)
         
-        addConstraintsToView(rect)
-    }
-    
-    func dynamicCaculateLabelRect() -> CGRect{
-        var size = CGSizeMake(200,CGFloat.max)
-        var attributes = [NSFontAttributeName: self.contentLabel.font]
-        var contentText:NSString = self.contentLabel.text as NSString!
-        var rect = contentText.boundingRectWithSize(size, options:.UsesLineFragmentOrigin, attributes: attributes, context:nil)
-        return rect
+        addConstraintsToView()
     }
     
     
-    func addConstraintsToView(rect: CGRect){
+    
+    func addConstraintsToView(){
         let viewsDictionary = ["avatar": avatar, "label": contentLabel, "image": contentImageView]
         var avatar_constraint_H_Format =  ""
         var avatar_constraint_V_Format =  ""
@@ -93,19 +68,15 @@ class MessageView: UIView {
         if messageInfo.status {
             avatar_constraint_H_Format =  "[avatar(50)]-5-|"
             avatar_constraint_V_Format =  "V:|-5-[avatar(50)]"
-            image_constraint_H_Format  =  "[image]-10-[avatar]"
-            image_constraint_V_Format  =  "V:|-5-[image]"
-            image_constraint_H1_Format =  "[image(\(rect.size.width + 35))]"
-            image_constraint_V1_Format =  "V:[image(\(rect.size.height + 20))]"
+            image_constraint_H_Format  =  "|-5-[image]-10-[avatar]"
+            image_constraint_V_Format  =  "V:|-5-[image(>=50)]-5-|"
             label_constraint_H_Format  =  "|-5-[label]-25-|"
             label_constraint_V_Fromat  =  "V:|[label]-5-|"
         } else {
             avatar_constraint_H_Format =  "|-5-[avatar(50)]"
             avatar_constraint_V_Format =  "V:|-5-[avatar(50)]"
-            image_constraint_H_Format  =  "[avatar]-10-[image]"
-            image_constraint_V_Format  =  "V:|-5-[image]"
-            image_constraint_H1_Format =  "[image(\(rect.size.width + 35))]"
-            image_constraint_V1_Format =  "V:[image(\(rect.size.height + 20))]"
+            image_constraint_H_Format  =  "[avatar]-10-[image]-5-|"
+            image_constraint_V_Format  =  "V:|-5-[image(>=50)]-5-|"
             label_constraint_H_Format  =  "|-25-[label]-5-|"
             label_constraint_V_Fromat  =  "V:|-5-[label]|"
         }
@@ -117,9 +88,6 @@ class MessageView: UIView {
         let image_constraint_H:NSArray = NSLayoutConstraint.constraintsWithVisualFormat(image_constraint_H_Format, options: NSLayoutFormatOptions(0), metrics: nil, views: viewsDictionary)
         let image_constraint_V:NSArray = NSLayoutConstraint.constraintsWithVisualFormat(image_constraint_V_Format, options: NSLayoutFormatOptions(0), metrics: nil, views: viewsDictionary)
         
-        let image_constraint_H1:NSArray = NSLayoutConstraint.constraintsWithVisualFormat(image_constraint_H1_Format, options: NSLayoutFormatOptions(0), metrics: nil, views: viewsDictionary)
-        let image_constraint_V1:NSArray = NSLayoutConstraint.constraintsWithVisualFormat(image_constraint_V1_Format, options: NSLayoutFormatOptions(0), metrics: nil, views: viewsDictionary)
-        
         let label_constraint_H:NSArray = NSLayoutConstraint.constraintsWithVisualFormat(label_constraint_H_Format, options: NSLayoutFormatOptions(0), metrics: nil, views: viewsDictionary)
         let label_constraint_V:NSArray = NSLayoutConstraint.constraintsWithVisualFormat(label_constraint_V_Fromat, options: NSLayoutFormatOptions(0), metrics: nil, views: viewsDictionary)
         
@@ -127,8 +95,6 @@ class MessageView: UIView {
         self.addConstraints(avatar_constraint_V)
         self.addConstraints(image_constraint_H)
         self.addConstraints(image_constraint_V)
-        self.addConstraints(image_constraint_H1)
-        self.addConstraints(image_constraint_V1)
         self.contentImageView.addConstraints(label_constraint_H)
         self.contentImageView.addConstraints(label_constraint_V)
         

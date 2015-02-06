@@ -94,18 +94,8 @@ class ChatRoomViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         //let cell = tableView.dequeueReusableCellWithIdentifier("messageCell", forIndexPath: indexPath) as UITableViewCell
-        let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "reuse")
-        var messageView = MessageView(messageInfo: messages[indexPath.row], frame: cell.frame)
-        cell.contentView.addSubview(messageView)
-        
-        let viewsDictionary = ["msgView": messageView]
-        
-        let avatar_constraint_H:NSArray = NSLayoutConstraint.constraintsWithVisualFormat("H:|[msgView]|", options: NSLayoutFormatOptions(0), metrics: nil, views: viewsDictionary)
-        let avatar_constraint_V:NSArray = NSLayoutConstraint.constraintsWithVisualFormat("V:|[msgView]|", options: NSLayoutFormatOptions(0), metrics: nil, views: viewsDictionary)
-        
-        cell.contentView.addConstraints(avatar_constraint_H)
-        cell.contentView.addConstraints(avatar_constraint_V)
-        
+        let cell = MsgCellTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "reuse")
+        cell.messageInfo = messages[indexPath.row]
         
         return cell
     }
@@ -114,23 +104,10 @@ class ChatRoomViewController: UIViewController, UITableViewDataSource, UITableVi
         return messages.count
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 60
-    }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
       return 1
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
